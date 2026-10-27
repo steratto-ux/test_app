@@ -9,6 +9,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: unzip -q "$(find . -name '*.zip' | head -n 1)"
       - run: sed -i 's/work-runtime-ktx:2.9.3/work-runtime-ktx:2.9.1/' MeteoMinimal/app/build.gradle.kts
+      - run: sed -i 's/catch (_: Exception)/catch (e: Exception)/' MeteoMinimal/app/src/main/java/it/example/meteo/LocationHelper.kt
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
