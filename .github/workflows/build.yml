@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: unzip -q MeteoMinimal1.zip
+      - run: unzip -q "$(find . -name '*.zip' | head -n 1)"
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
