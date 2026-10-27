@@ -12,6 +12,8 @@ jobs:
           unzip -q "$(find . -name '*.zip' | head -n 1)"
           sed -i 's/work-runtime-ktx:2.9.3/work-runtime-ktx:2.9.1/' MeteoMinimal/app/build.gradle.kts
           sed -i 's/catch (_: Exception)/catch (e: Exception)/' MeteoMinimal/app/src/main/java/it/example/meteo/LocationHelper.kt
+          sed -i 's/actionStartActivity<MainActivity>()/actionStartActivity(Intent(LocalContext.current, MainActivity::class.java))/' MeteoMinimal/app/src/main/java/it/example/meteo/WeatherWidget.kt
+          sed -i '/^import android.content.Context/a import android.content.Intent\nimport androidx.glance.LocalContext' MeteoMinimal/app/src/main/java/it/example/meteo/WeatherWidget.kt
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
